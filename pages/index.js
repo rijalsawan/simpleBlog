@@ -10,20 +10,14 @@ import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [state , setState] = useState(false)
   const router = useRouter();
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      setState(false)
       router.push("/login");
-    }
-    else{
-      setState(true)
     }
   }, []);
   return (
     <>
-    <Navbar state={state}/>
       <div className="lg:flex justify-center lg:mt-[10rem] lg:mb-[10rem]">
         <div className="w-1/2">
           {/* <h1 className="font-bold text-[3rem] w-[30rem]">Welcome to the Simple Blogging App</h1> */}

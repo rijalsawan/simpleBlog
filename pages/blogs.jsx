@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import mongoose from "mongoose";
 import Blog from "@/models/Blog";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export const getServerSideProps = async (context) => {
     if (!mongoose.connections[0].readyState) {
