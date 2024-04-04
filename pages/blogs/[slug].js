@@ -15,8 +15,6 @@ export const getServerSideProps = async (context) => {
 };
 
 const Blogs = ({blogs}) => {
-    console.log(blogs);
-
     const parseDate = (date) => {
         const newDate = new Date(date);
         return newDate.toLocaleDateString("en-US", {
@@ -48,7 +46,7 @@ const Blogs = ({blogs}) => {
                 <ul className="flex flex-wrap text-sm leading-6 -mt-6 -mx-5">
                   <li className="flex items-center font-medium whitespace-nowrap px-5 mt-6">
                     <img
-                      src="/_next/static/media/adamwathan.8adb7a70.jpg"
+                      src="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
                       alt=""
                       className="mr-3 w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800"
                       decoding="async"

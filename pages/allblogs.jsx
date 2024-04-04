@@ -49,7 +49,7 @@ const Allblogs = () => {
   return (
     <>
       <h1 className="text-3xl font-bold justify-center flex m-10">My Blogs</h1>
-      <TableContainer w={600} m={"auto"} marginTop={10} className="text-xl">
+      <TableContainer w={1000} m={"auto"} marginTop={10} className="text-xl">
         <Table variant="simple">
           {blogs.map((item) => {
             return (
