@@ -30,14 +30,14 @@ export default function Signup() {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         let data = {
             name,
             email,
             password
         }
-        fetch('/api/signup', {
+        await fetch('/api/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

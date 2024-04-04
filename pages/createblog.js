@@ -66,16 +66,16 @@ const CreateBlog = () => {
     };
   return (
     <div>
-      <h1 className="text-center my-10 text-3xl font-bold">Compose a new Blog</h1>
-    <div className="w-[30rem] mx-auto space-y-10">
-    <form action="/" onSubmit={handleSubmit} method="POST">
+      <h1 className="text-center my-10 text-3xl lg:font-bold">Compose a new Blog</h1>
+    <div className="lg:w-[30rem] mx-auto space-y-10">
+    <form action="/" className="max-sm:m-6" onSubmit={handleSubmit} method="POST">
       <FormControl>
         <FormLabel>Title</FormLabel>
         <Input type="text" name="title" onChange={handleTitleChange} value={title} />
       </FormControl>
         <FormControl>
             <FormLabel>Content</FormLabel>
-      <Textarea name="content" onChange={handleContentChange} value={content} h={400} />
+      <Textarea name="content" h={300} onChange={handleContentChange} value={content}/>
         </FormControl>
         <div className="flex justify-center m-10">
         <Button bg={"green"} textColor={"white"} _hover={"green"} onClick={onOpen}>Post</Button>

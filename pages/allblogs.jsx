@@ -26,8 +26,8 @@ const Allblogs = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
   const [blogs, setBlogs] = useState([]);
-  const handleDelete = (slug) => () => {
-    fetch("http://localhost:3000/api/deleteBlog", {
+  const handleDelete = (slug) => async () => {
+    await fetch("/api/deleteBlog", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const Allblogs = () => {
     onClose()
   };
   useEffect(() => {
-    fetch("http://localhost:3000/api/getBlogs")
+    fetch("/api/getBlogs")
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);
@@ -48,8 +48,8 @@ const Allblogs = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold justify-center flex m-10">My Blogs</h1>
-      <TableContainer w={1000} m={"auto"} marginTop={10} className="text-xl">
+      <h1 className="text-3xl lg:font-bold justify-center flex m-10">My Blogs</h1>
+      <TableContainer m={"auto"} marginTop={10} className="text-xl lg:w-[50rem] max-sm:text-[7px] max-sm:w-[40rem]">
         <Table variant="simple">
           {blogs.map((item) => {
             return (
@@ -58,17 +58,17 @@ const Allblogs = () => {
                   <Tr>
                     <Td>
                       <UnorderedList>
-                        <ListItem className="flex gap-3">
-                          {item.title}{" "}
+                        <ListItem>
+                          {item.title}
                         </ListItem>
                       </UnorderedList>
                     </Td>
                     <Td>
-                    <span className="cursor-pointer hover:opacity-85 transition-all">
+                    <div className="cursor-pointer hover:opacity-85 transition-all">
                     {/* <Button colorScheme='red' onClick={onOpen}>
         Delete
       </Button> */}
-      <img width={40} src="/trash-bin.png" onClick={onOpen} alt="" />
+      <img className="lg:h-[3rem] max-sm:h-4" src="/trash-bin.png" onClick={onOpen} alt="" />
 
       <AlertDialog
         isOpen={isOpen}
@@ -96,7 +96,7 @@ const Allblogs = () => {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-                          </span>
+                          </div>
                     </Td>
                   </Tr>
                 </Tbody>

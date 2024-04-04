@@ -18,8 +18,8 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="lg:flex justify-center lg:mt-[10rem] lg:mb-[10rem]">
-        <div className="w-1/2">
+      <div className="lg:flex max-sm:m-4 justify-center lg:mt-[10rem] lg:mb-[10rem]">
+        <div className="lg:w-1/2">
           {/* <h1 className="font-bold text-[3rem] w-[30rem]">Welcome to the Simple Blogging App</h1> */}
           <Heading lineHeight='tall'>
             <Highlight
@@ -29,9 +29,9 @@ export default function Home() {
               Welcome to the Simple Blogging App.
             </Highlight>
           </Heading>
-          <p className="text-lg w-[30rem] my-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ratione hic dolorem! Tempore praesentium nam sapiente ipsa non, a fugiat?</p>
+          <p className="text-lg lg:w-[30rem] my-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ratione hic dolorem! Tempore praesentium nam sapiente ipsa non, a fugiat?</p>
         </div>
-        <div className="w1/2">
+        <div className="">
           <img className="" height={500} width={500} src="https://production-server-default-bucket.s3.amazonaws.com/64ec5007da11467032babb55" alt="image" />
         </div>
       </div>
