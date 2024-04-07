@@ -6,14 +6,27 @@ import { useDisclosure } from '@chakra-ui/react'
 import { useToast } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { AlertDialog, AlertDialogBody, AlertDialogFooter,AlertDialogCloseButton, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay } from '@chakra-ui/react'
+import { Editor } from '@tinymce/tinymce-react';
+import { useRef } from 'react';
+import dotenv from 'dotenv'
+var Extrator = require("html-extractor");
 
 const CreateBlog = () => {
+    var myExtrator = new Extrator();
+    dotenv.config()
     const toast = useToast()
     const router = useRouter()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = React.useRef()
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+
+    const editorRef = useRef(null);
+  const log = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent());
+    }
+  };
 
     const handleTitleChange = (e) => {
         if(e.target.name == "title")
@@ -26,6 +39,8 @@ const CreateBlog = () => {
     }
 
     const handleSubmit = async (e) => {
+        const content = editorRef.current.getContent();
+        console.log(content);
         if (!title || !content) {
             toast({
                 title: "Please fill in all fields",
@@ -36,7 +51,7 @@ const CreateBlog = () => {
             return;
         }
         e.preventDefault();
-        const response = await fetch("http://localhost:3000/api/addBlog", {
+        const response = await fetch("/api/addBlog", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +90,24 @@ const CreateBlog = () => {
       </FormControl>
         <FormControl>
             <FormLabel>Content</FormLabel>
-      <Textarea name="content" h={300} onChange={handleContentChange} value={content}/>
+            <Editor
+        apiKey="j029l8bbej5u8qnfevym04h53xu535vvm3dc66y8eydmf9rd"
+        onInit={(evt, editor) => editorRef.current = editor}
+        init={{
+          height: 500,
+          menubar: false,
+          plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+          ],
+          toolbar: 'undo redo | blocks | ' +
+            'bold italic forecolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+        }}
+      />
         </FormControl>
         <div className="flex justify-center m-10">
         <Button bg={"green"} textColor={"white"} _hover={"green"} onClick={onOpen}>Post</Button>
@@ -98,7 +130,7 @@ const CreateBlog = () => {
             <Button ref={cancelRef} onClick={onClose}>
               No
             </Button>
-            <Button type="submit" onClick={handleSubmit} colorScheme='green' ml={3}>
+            <Button type="submit" onClick={handleSubmit}  colorScheme='green' ml={3}>
               Yes
             </Button>
           </AlertDialogFooter>

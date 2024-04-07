@@ -66,8 +66,7 @@ const Blogs = ({blogs}) => {
                 </ul>
               </div>
             </article>
-            <p className="mt-10">
-                {blogs.content}
+            <p className="mt-10" dangerouslySetInnerHTML={{__html: blogs.content}}>
             </p>
           </main>
         </div>

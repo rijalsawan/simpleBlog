@@ -51,9 +51,8 @@ const Blogs = ({blogs}) => {
                 {item.title}
               </h3>
               <div className="mt-2 mb-4 prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2">
-                <p className="w-[40rem]">
-                    {item.content}  
-                </p>
+                <span className="w-[40rem]" dangerouslySetInnerHTML={{__html: item.content}}>
+                </span>
               </div>
               <dl className="absolute left-0 top-0 lg:left-auto lg:right-full lg:mr-[calc(6.5rem+1px)]">
                 <dt className="sr-only">Date</dt>
