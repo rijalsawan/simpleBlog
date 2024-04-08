@@ -19,7 +19,7 @@ const CreateBlog = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = React.useRef()
     const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [category, setCategory] = useState("");
 
     const editorRef = useRef(null);
   const log = () => {
@@ -33,14 +33,8 @@ const CreateBlog = () => {
         setTitle(e.target.value);
     };
 
-    const handleContentChange = (e) => {
-        if(e.target.name == "content")
-        setContent(e.target.value);
-    }
-
     const handleSubmit = async (e) => {
         const content = editorRef.current.getContent();
-        console.log(content);
         if (!title || !content) {
             toast({
                 title: "Please fill in all fields",
@@ -61,10 +55,10 @@ const CreateBlog = () => {
                 slug: title.toLowerCase().replace(/ /g, "-"),
                 title,
                 content,
+                category
             }),
         });
         const data = await response.json();
-        console.log(data);
         if (data.error) {
             alert(data.error);
         } else {
@@ -75,7 +69,6 @@ const CreateBlog = () => {
                 isClosable: true,
             })
             setTitle("");
-            setContent("");
             router.push("/");
         }
     };
