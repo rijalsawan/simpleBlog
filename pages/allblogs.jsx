@@ -20,6 +20,7 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
 } from "@chakra-ui/react";
+import { Spinner } from '@chakra-ui/react'
 
 const Allblogs = () => {
   const [loading, setLoading] = useState(true);
@@ -39,17 +40,26 @@ const Allblogs = () => {
     onClose()
   };
   useEffect(() => {
-    fetch("/api/getBlogs")
+    fetch("/api/getBlogs", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        user: localStorage.getItem("user"),
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);
+        setLoading(false);
       });
   }, []);
 
   return (
     <>
       <h1 className="text-3xl lg:font-bold justify-center flex m-10">My Blogs</h1>
-      <TableContainer m={"auto"} marginTop={10} className="text-xl lg:w-[50rem] max-sm:text-[7px] max-sm:w-[40rem]">
+      <TableContainer className="text-xl mt-10 lg:mx-[30rem] lg:w-[50rem] max-sm:text-[7px] max-sm:w-[40rem]">
+      {loading && <div className="flex justify-center"><Spinner/></div>}
         <Table variant="simple">
           {blogs.map((item) => {
             return (

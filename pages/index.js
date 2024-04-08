@@ -1,11 +1,9 @@
 
 import { Inter } from "next/font/google";
-import Navbar from "../components/Navbar";
 import Link from "next/link";
 import { Highlight, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +27,8 @@ export default function Home() {
               Welcome to the Simple Blogging App.
             </Highlight>
           </Heading>
-          <p className="text-lg lg:w-[30rem] my-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ratione hic dolorem! Tempore praesentium nam sapiente ipsa non, a fugiat?</p>
+          <p className="text-lg lg:w-[30rem] my-10">
+Welcome to our simple and intuitive blog app, where creativity meets convenience. With an easy-to-use interface, you can effortlessly create, publish, and share your thoughts with the world. Whether you&apos;re a seasoned blogger or just starting out, our platform offers everything you need to express yourself and connect with like-minded individuals.</p>
         </div>
         <div className="">
           <img className="" height={500} width={500} src="https://production-server-default-bucket.s3.amazonaws.com/64ec5007da11467032babb55" alt="image" />

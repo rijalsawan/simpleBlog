@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { Textarea } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 import { useToast } from '@chakra-ui/react'
@@ -10,6 +9,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useRef } from 'react';
 import dotenv from 'dotenv'
 var Extrator = require("html-extractor");
+import { jwtDecode } from "jwt-decode";
 
 const CreateBlog = () => {
     var myExtrator = new Extrator();
@@ -20,6 +20,7 @@ const CreateBlog = () => {
     const cancelRef = React.useRef()
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
+    const [user, setUser] = useState("");
 
     const editorRef = useRef(null);
   const log = () => {
@@ -55,7 +56,7 @@ const CreateBlog = () => {
                 slug: title.toLowerCase().replace(/ /g, "-"),
                 title,
                 content,
-                category
+                user
             }),
         });
         const data = await response.json();
@@ -72,6 +73,11 @@ const CreateBlog = () => {
             router.push("/");
         }
     };
+    useEffect(() => {
+      const token = localStorage.getItem("user");
+      setUser(token);
+
+    }, [router]);
   return (
     <div>
       <h1 className="text-center my-10 text-3xl lg:font-bold">Compose a new Blog</h1>

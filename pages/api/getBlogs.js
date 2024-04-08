@@ -5,7 +5,7 @@ import connectDb from '../../middleware/mongoose';
 const handler = async (req, res) => {
     if (req.method === 'GET') {
         try{
-            const blogs = await Blog.find({});
+            const blogs = await Blog.find({user: req.headers.user});
             res.status(200).json(blogs);
         } catch (error) {
             console.log(error);

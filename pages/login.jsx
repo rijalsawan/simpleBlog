@@ -3,8 +3,11 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 import { useToast } from '@chakra-ui/react'
 import Link from 'next/link'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
 export default function Signin() {
+  dotenv.config()
   const toast = useToast();
   const router = useRouter()
   useEffect(() => {
@@ -44,8 +47,9 @@ export default function Signin() {
         .then(res => res.json())
         .then(data => {
             if(data.success){
-                console.log(data)
+                console.log(data);
                 localStorage.setItem('token', data.token)
+                localStorage.setItem('user', email)
                 toast({
                   title: `User login successful`,
                   status: 'success',

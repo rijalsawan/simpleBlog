@@ -52,7 +52,6 @@ const Blogs = ({blogs}) => {
                       decoding="async"
                     />
                     <div className="text-sm leading-4">
-                      <div className="">{blogs.user}</div>
                       <div className="mt-1">
                         <a
                           href="https://twitter.com/adamwathan"
