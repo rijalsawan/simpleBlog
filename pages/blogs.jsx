@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import Blog from "@/models/Blog";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import {useRouter} from 'next/router'
 
 export const getServerSideProps = async (context) => {
     if (!mongoose.connections[0].readyState) {
@@ -16,6 +17,7 @@ export const getServerSideProps = async (context) => {
   };
 
 const Blogs = ({blogs}) => {
+  const router = useRouter();
     const parseDate = (date) => {
         const newDate = new Date(date);
         return newDate.toLocaleDateString("en-US", {
@@ -24,6 +26,12 @@ const Blogs = ({blogs}) => {
             day: "numeric",
         });
     };
+
+    useEffect(() => {
+      if (!localStorage.getItem("token")) {
+        router.push("/");
+      }
+    }, []);
 
   return (
     <>

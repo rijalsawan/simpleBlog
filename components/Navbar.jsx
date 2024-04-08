@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import {useToast} from '@chakra-ui/react'
+import {Button, useToast} from '@chakra-ui/react'
 import { useState } from 'react'
 
 const navigation = [
@@ -66,8 +66,7 @@ export default function Example({state}) {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-               
-              <h1 className='text-white text0sm font-bold'>Hi {user}!</h1>
+              
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   {state && <div>
