@@ -28,7 +28,7 @@ const Blogs = ({blogs}) => {
   return (
     <>
      <h1 className="text-3xl text-center mt-5 font-bold">All Blogs</h1>
-      <div className="relative w-[40rem]  sm:pb-12 lg:ml-[35rem] mt-10">
+      <div className="relative lg:w-[40rem]  sm:pb-12 lg:ml-[35rem] mt-10">
      
         <div className="hidden absolute top-3 bottom-0 right-full mr-7 md:mr-[3.25rem] w-px bg-slate-200 dark:bg-slate-800 sm:block"></div>
         {blogs.map((item) => { return(<div key={item.slug} className="space-y-16 mb-5 max-sm:m-5">
