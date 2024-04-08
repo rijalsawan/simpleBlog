@@ -20,6 +20,10 @@ function classNames(...classes) {
 export default function Example({state}) {
   const toast = useToast();
   const router = useRouter()
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    setUser(localStorage.getItem('user'));
+  }, []);
   return (
     <>
     <Disclosure as="nav" className="shadow-lg bg-black">
@@ -63,7 +67,7 @@ export default function Example({state}) {
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                
-
+              <h1 className='text-white text0sm font-bold'>Hi {user}!</h1>
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   {state && <div>
