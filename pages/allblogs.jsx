@@ -58,7 +58,7 @@ const Allblogs = () => {
   return (
     <>
       <h1 className="text-3xl lg:font-bold justify-center flex m-10">My Blogs</h1>
-      <TableContainer className="text-xl mt-10 lg:mx-[30rem] lg:w-[50rem] max-sm:text-[7px] max-sm:w-[40rem]">
+      <TableContainer className="text-xl mt-10 max-sm:ml-10 lg:mx-[30rem] lg:w-[50rem] max-sm:text-[1rem]">
       {loading && <div className="flex justify-center"><Spinner/></div>}
         <Table variant="simple">
           {blogs.map((item) => {
@@ -120,3 +120,4 @@ const Allblogs = () => {
 };
 
 export default Allblogs;
+
