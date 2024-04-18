@@ -4,6 +4,7 @@ import { useState } from "react";
 const Search = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
   const handleSearchChange = (e) => {
     if (e.target.name === "search") setQuery(e.target.value);
   };
@@ -19,16 +20,18 @@ const Search = () => {
     };
 
     try {
+        setLoading(true);
       const response = await fetch(url, options);
       const result = await response.json();
       setResults(result.data);
-      console.log(results);
+        setLoading(false);
     } catch (error) {
       console.error(error);
     }
   };
   return (
     <>
+    {loading && <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center"> <p className="text-white">Loading...</p> </div>}
       <div className="flex justify-center mt-[5rem] gap-3 max-sm:mx-5">
         <input
           onChange={handleSearchChange}
