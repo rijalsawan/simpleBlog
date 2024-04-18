@@ -9,8 +9,8 @@ import { useState } from 'react'
 const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'Blogs', href: '/blogs', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Compose Blog', href: '/createblog', current: false },
+  { name: 'Search', href: '/search', current: false },
 ]
 
 function classNames(...classes) {

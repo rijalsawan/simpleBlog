@@ -9,7 +9,9 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useRef } from 'react';
 import dotenv from 'dotenv'
 var Extrator = require("html-extractor");
-import { jwtDecode } from "jwt-decode";
+import { useEditor, EditorContent } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+
 
 const CreateBlog = () => {
     var myExtrator = new Extrator();
@@ -23,6 +25,12 @@ const CreateBlog = () => {
     const [user, setUser] = useState("");
 
     const editorRef = useRef(null);
+    const editor = useEditor({
+      extensions: [
+        StarterKit,
+      ],
+      content: '<p>Hello World! 🌎️</p>',
+    })
   const log = () => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent());
