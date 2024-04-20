@@ -58,18 +58,19 @@ const Allblogs = () => {
   return (
     <>
       <h1 className="text-3xl lg:font-bold justify-center flex m-10">My Blogs</h1>
-      <TableContainer className="text-xl mt-10 max-sm:ml-10 lg:mx-[30rem] lg:w-[50rem] max-sm:text-[1rem]">
+      <TableContainer className="text-xl mt-10 max-sm:ml-10 lg:mx-[30rem] lg:w-[50rem] max-sm:text-[9px]">
       {loading && <div className="flex justify-center"><Spinner/></div>}
         <Table variant="simple">
           {blogs.map((item) => {
             return (
               <>
-                <Tbody key={item.slug}>
+                <Tbody key={item.slug} display={"flex"}>
                   <Tr>
                     <Td>
                       <UnorderedList>
-                        <ListItem>
+                        <ListItem display={"flex"} justifyContent={"center"} gap={3}>
                           {item.title}
+                          <img className="lg:h-[2rem] max-sm:h-4" src="/trash-bin.png" onClick={onOpen} alt="" />
                         </ListItem>
                       </UnorderedList>
                     </Td>
@@ -78,7 +79,7 @@ const Allblogs = () => {
                     {/* <Button colorScheme='red' onClick={onOpen}>
         Delete
       </Button> */}
-      <img className="lg:h-[3rem] max-sm:h-4" src="/trash-bin.png" onClick={onOpen} alt="" />
+      
 
       <AlertDialog
         isOpen={isOpen}
