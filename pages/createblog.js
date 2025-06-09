@@ -83,7 +83,17 @@ const CreateBlog = () => {
     };
     useEffect(() => {
       const token = localStorage.getItem("user");
-      setUser(token);
+      if (!token) {
+        toast({
+          title: "Login to continue",
+          status: "error",
+          duration: 1500,
+          isClosable: true,
+        });
+        router.push("/login");
+      } else {
+        setUser(token);
+      }
 
     }, [router]);
   return (

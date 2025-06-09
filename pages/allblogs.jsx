@@ -116,6 +116,7 @@ const Allblogs = () => {
           })}
         </Table>
       </TableContainer>
+      
     </>
   );
 };

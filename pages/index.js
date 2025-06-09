@@ -8,12 +8,7 @@ import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const router = useRouter();
-  useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      router.push("/login");
-    }
-  }, []);
+  
   return (
     <>
       <div className="lg:flex max-sm:m-4 justify-center lg:mt-[10rem] lg:mb-[10rem]">

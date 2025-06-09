@@ -24,53 +24,35 @@ const Blogs = ({blogs}) => {
         });
     };
   return (
-    <>
-      <div className="px-4 sm:px-6 md:px-8 mt-10">
-        <div className="max-w-3xl mx-auto">
-          <main>
-            <article className="relative pt-10">
-              <h1 className="text-2xl font-extrabold tracking-tight  md:text-3xl">
-                {blogs.title}
-              </h1>
-              <div className="text-sm leading-6">
-                <dl>
-                  <dt className="sr-only">Date</dt>
-                  <dd className="absolute top-0 inset-x-0">
-                    <time dateTime="2024-03-19T18:00:00.000Z">
-                        {parseDate(blogs.createdAt)}
-                    </time>
-                  </dd>
-                </dl>
-              </div>
-              <div className="mt-6">
-                <ul className="flex flex-wrap text-sm leading-6 -mt-6 -mx-5">
-                  <li className="flex items-center font-medium whitespace-nowrap px-5 mt-6">
-                    <img
-                      src="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
-                      alt=""
-                      className="mr-3 w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800"
-                      decoding="async"
-                    />
-                    <div className="text-sm leading-4">
-                      <div className="mt-1">
-                        <a
-                          href="https://twitter.com/adamwathan"
-                          className="text-sky-500 hover:text-sky-600 dark:text-sky-400"
-                        >
-                          @{blogs.user}
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <p className="mt-10" dangerouslySetInnerHTML={{__html: blogs.content}}>
-            </p>
-          </main>
-        </div>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-2xl mx-auto px-6 py-16">
+        <article className="space-y-8">
+          {/* Header */}
+          <header className="space-y-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              {blogs.title}
+            </h1>
+            
+            <div className="flex items-center space-x-4 text-sm text-gray-500">
+              <time dateTime={blogs.createdAt}>
+                {parseDate(blogs.createdAt)}
+              </time>
+              <span>•</span>
+              <span>By @{blogs.user}</span>
+            </div>
+          </header>
+
+          {/* Divider */}
+          <hr className="border-gray-200" />
+
+          {/* Content */}
+          <div 
+            className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
+            dangerouslySetInnerHTML={{__html: blogs.content}}
+          />
+        </article>
       </div>
-    </>
+    </div>
   );
 };
 
